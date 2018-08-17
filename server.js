@@ -6,14 +6,12 @@ const path = require('path');
 
 const PORT = process.env.PORT || 3000;
 const INDEX = path.join(__dirname, 'index.html');
-var cors = require('cors');
 
-// use it before all route definitions
 
 const server = express()
   .use((req, res) => res.sendFile(INDEX))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
-server.use(cors({origin: 'http://localhost:80'}));
+
 const wss = new SocketServer({ server });
 
 wss.on('connection', (ws) => {
