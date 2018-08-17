@@ -10,7 +10,7 @@ const INDEX = path.join(__dirname, 'index.html');
 const server = express()
   .use((req, res) => res.sendFile(INDEX) )
   .listen(PORT, () => console.log(`Listening on ${ PORT }`));
-res.setHeader('Access-Control-Allow-Origin', 'http://localhost:80');
+
 const wss = new SocketServer({ server });
 
 wss.on('connection', (ws) => {
